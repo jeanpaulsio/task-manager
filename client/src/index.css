@@ -24,6 +24,10 @@ li {
   width: 430px;
 }
 
+a {
+  color: white;
+}
+
 input[type="checkbox"] {
   margin-right: 10px;
 }
