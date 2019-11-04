@@ -3,7 +3,7 @@ import Task from "../models/task";
 
 const router = new Router();
 
-router.post("/tasks", async (req, res) => {
+router.post("/tasks.json", async (req, res) => {
   const task = new Task(req.body);
 
   try {
@@ -14,7 +14,7 @@ router.post("/tasks", async (req, res) => {
   }
 });
 
-router.get("/tasks", async (req, res) => {
+router.get("/tasks.json", async (req, res) => {
   try {
     const tasks = await Task.find({});
     res.send(tasks);
@@ -23,7 +23,7 @@ router.get("/tasks", async (req, res) => {
   }
 });
 
-router.get("/tasks/:id", async (req, res) => {
+router.get("/tasks/:id.json", async (req, res) => {
   const _id = req.params.id;
 
   try {
@@ -37,7 +37,7 @@ router.get("/tasks/:id", async (req, res) => {
   }
 });
 
-router.patch("/tasks/:id", async (req, res) => {
+router.patch("/tasks/:id.json", async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdateds = ["description", "completed"];
   const isValidOperation = updates.every(update => allowedUpdateds.includes(update));
@@ -61,7 +61,7 @@ router.patch("/tasks/:id", async (req, res) => {
   }
 });
 
-router.delete("/tasks/:id", async (req, res) => {
+router.delete("/tasks/:id.json", async (req, res) => {
   try {
     const task = await Task.findByIdAndDelete(req.params.id);
     if (!task) {

@@ -16,7 +16,7 @@ function App() {
       setIsLoading(true);
 
       try {
-        const result = await axios("/tasks");
+        const result = await axios.get("/tasks.json");
         setData(result.data);
       } catch (e) {
         setIsError(true);
@@ -49,7 +49,7 @@ function App() {
 
   async function handleToggleTask(id, completed) {
     try {
-      await axios.patch(`/tasks/${id}`, { completed });
+      await axios.patch(`/tasks/${id}.json`, { completed });
 
       // Optimistically render changes
       setData(prevData => prevData.map(task => (task._id === id ? { ...task, completed } : task)));
@@ -60,7 +60,7 @@ function App() {
 
   async function handleDeleteTask(id) {
     try {
-      await axios.delete(`/tasks/${id}`);
+      await axios.delete(`/tasks/${id}.json`);
 
       // Optimistically render changes
       setData(prevData => prevData.filter(task => task._id !== id));
@@ -73,7 +73,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post("/tasks", {
+      const { data } = await axios.post("/tasks.json", {
         description: newTask,
       });
       setData(prevData => [...prevData, data]);
@@ -115,7 +115,7 @@ function Task() {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await axios(`/tasks/${id}`);
+        const result = await axios.get(`/tasks/${id}.json`);
         setData(result.data);
       } catch (e) {
         //
