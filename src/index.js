@@ -8,7 +8,7 @@ import "./db/mongoose";
 const app = express();
 const port = process.env.PORT;
 
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 app.use(express.json());
 
 app.post("/users", (req, res) => {
