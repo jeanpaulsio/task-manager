@@ -4,13 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint '**/*.{js,jsx}' --quiet",
+    "lint:fix": "eslint '**/*.{js,jsx}' --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "esm": "3.2.25",
-    "mongodb": "3.3.3"
+    "mongodb": "3.3.3",
+    "mongoose": "5.7.7"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.0.3",
+    "eslint": "6.6.0",
+    "eslint-plugin-react": "7.16.0",
+    "prettier": "1.18.2"
   }
 }
