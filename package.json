@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint '**/*.{js,jsx}' --quiet",
-    "lint:fix": "eslint '**/*.{js,jsx}' --fix"
+    "lint:server": "eslint '**/*.js' --ignore-pattern /client/",
+    "lint:client": "cd client && eslint 'src/**/*.js'",
+    "lint": "yarn run lint:server; yarn run lint:client"
   },
   "keywords": [],
   "author": "",
