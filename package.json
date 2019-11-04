@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node -r esm src/index.js",
     "dev": "env-cmd -f ./config/dev.env nodemon -r esm src/index.js",
+    "dev:client": "cd client && yarn start",
+    "test:client": "cd client && yarn test",
     "lint:server": "eslint '**/*.js' --ignore-pattern /client/",
     "lint:client": "cd client && eslint 'src/**/*.js'",
     "lint": "yarn run lint:server; yarn run lint:client",
