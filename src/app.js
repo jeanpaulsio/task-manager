@@ -13,7 +13,7 @@ app.use(TaskRouter);
 
 // Handles any requests that don't match the ones above
 app.get("*", (_req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  res.sendFile(path.join(__dirname + "../client/build/index.html"));
 });
 
 export default app;
