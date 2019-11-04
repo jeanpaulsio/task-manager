@@ -7,7 +7,7 @@ beforeEach(setupDatabase);
 
 test("Should create a task", async () => {
   const response = await request(app)
-    .post("/tasks")
+    .post("/tasks.json")
     .send({ description: "test task" })
     .expect(201);
   const task = await Task.findById(response.body._id);
@@ -17,7 +17,7 @@ test("Should create a task", async () => {
 
 test("Should fetch all tasks", async () => {
   const response = await request(app)
-    .get("/tasks")
+    .get("/tasks.json")
     .send()
     .expect(200);
   expect(response.body.length).toEqual(3);
@@ -25,7 +25,7 @@ test("Should fetch all tasks", async () => {
 
 test("Should fetch a single task", async () => {
   const response = await request(app)
-    .get(`/tasks/${taskOne._id}`)
+    .get(`/tasks/${taskOne._id}.json`)
     .send()
     .expect(200);
 
@@ -35,7 +35,7 @@ test("Should fetch a single task", async () => {
 
 test("Should update a task", async () => {
   const response = await request(app)
-    .patch(`/tasks/${taskOne._id}`)
+    .patch(`/tasks/${taskOne._id}.json`)
     .send({ description: "updated description", completed: true })
     .expect(200);
   expect(response.body.description).toEqual("updated description");
@@ -46,7 +46,7 @@ test("Should delete a task", async () => {
   expect((await Task.find({})).length).toEqual(3);
 
   const response = await request(app)
-    .delete(`/tasks/${taskOne._id}`)
+    .delete(`/tasks/${taskOne._id}.json`)
     .send()
     .expect(200);
   expect(response.body.description).toEqual(taskOne.description);
