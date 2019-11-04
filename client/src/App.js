@@ -4,17 +4,17 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
-  const [data, setData] = React.useState([]);
+  // const [data, setData] = React.useState([]);
 
-  React.useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios("/users");
-      setData(result.data);
-    };
-    fetchData();
-  }, []);
+  // React.useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios("/tasks");
+  //     setData(result.data);
+  //   };
+  //   fetchData();
+  // }, []);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="App">

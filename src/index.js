@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 
-import User from "./models/user";
+import TaskRouter from "./routers/task";
 
 import "./db/mongoose";
 
@@ -10,24 +10,7 @@ const port = process.env.PORT;
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 app.use(express.json());
-
-app.post("/users", (req, res) => {
-  const user = new User(req.body);
-  user
-    .save()
-    .then(() => {
-      res.send(user);
-    })
-    .catch(e => {
-      res.status(400).send(e);
-    });
-});
-
-app.get("/users", (req, res) => {
-  User.find()
-    .then(users => res.send(users))
-    .catch(e => console.log(e));
-});
+app.use(TaskRouter);
 
 // Handles any requests that don't match the ones above
 app.get("*", (_req, res) => {
