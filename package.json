@@ -7,11 +7,18 @@
     "start": "node -r esm src/index.js",
     "dev": "env-cmd -f ./config/dev.env nodemon -r esm src/index.js",
     "dev:client": "cd client && yarn start",
+    "test:server": "env-cmd -f ./config/test.env jest --watch --runInBand src/**",
     "test:client": "cd client && yarn test",
     "lint:server": "eslint '**/*.js' --ignore-pattern /client/",
     "lint:client": "cd client && eslint 'src/**/*.js'",
     "lint": "yarn run lint:server; yarn run lint:client",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      ".js": "jest-esm-transformer"
+    }
   },
   "keywords": [],
   "author": "",
@@ -28,7 +35,10 @@
     "env-cmd": "10.0.1",
     "eslint": "6.6.0",
     "eslint-plugin-react": "7.16.0",
+    "jest": "^24.9.0",
+    "jest-esm-transformer": "1.0.0",
     "nodemon": "^1.19.4",
-    "prettier": "1.18.2"
+    "prettier": "1.18.2",
+    "supertest": "4.0.2"
   }
 }
