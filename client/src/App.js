@@ -1,8 +1,21 @@
 import React from "react";
-import logo from "./logo.svg";
+import axios from "axios";
+
 import "./App.css";
 
 function App() {
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios("/users");
+      setData(result.data);
+    };
+    fetchData();
+  }, []);
+
+  console.log(data);
+
   return (
     <div className="App">
       <header className="App-header">

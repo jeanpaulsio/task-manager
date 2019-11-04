@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node -r esm src/index.js",
-    "dev": "nodemon -r esm src/index.js",
+    "dev": "env-cmd -f ./config/dev.env nodemon -r esm src/index.js",
     "lint:server": "eslint '**/*.js' --ignore-pattern /client/",
     "lint:client": "cd client && eslint 'src/**/*.js'",
-    "lint": "yarn run lint:server; yarn run lint:client"
+    "lint": "yarn run lint:server; yarn run lint:client",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "babel-eslint": "10.0.3",
+    "env-cmd": "10.0.1",
     "eslint": "6.6.0",
     "eslint-plugin-react": "7.16.0",
     "nodemon": "^1.19.4",
