@@ -1,10 +1,11 @@
 # Readme
 
-## Overcommit
-
-Install overcommit
-
 ```bash
-gem install overcommit
-overcommit --sign
+yarn install
+
+# Start Server
+yarn server:dev
+
+# Start Client
+yarn client:dev
 ```

@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node -r esm src/index.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon -r esm src/index.js",
-    "dev:client": "cd client && yarn start",
-    "test:server": "env-cmd -f ./config/test.env jest --watch --runInBand src/**",
-    "test:client": "cd client && yarn test",
-    "lint:server": "eslint '**/*.js' --ignore-pattern /client/",
-    "lint:client": "cd client && eslint 'src/**/*.js'",
-    "lint": "yarn run lint:server; yarn run lint:client",
+    "lint": "yarn run server:lint; yarn run client:lint",
+    "server:dev": "env-cmd -f ./config/dev.env nodemon -r esm src/index.js",
+    "server:test": "env-cmd -f ./config/test.env jest --watch --runInBand src/**",
+    "server:lint": "eslint '**/*.js' --ignore-pattern /client/",
+    "client:dev": "cd client && yarn start",
+    "client:test": "cd client && yarn test",
+    "client:lint": "cd client && eslint 'src/**/*.js'",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "jest": {
